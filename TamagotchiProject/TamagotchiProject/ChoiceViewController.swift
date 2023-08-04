@@ -53,24 +53,38 @@ extension ChoiceViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let row: TamagotchiState = tamagochiInfo.tamagotchi[indexPath.row]
+        
         guard let cell = TamagotchiCollectionView.dequeueReusableCell(withReuseIdentifier: TamagotchiCollectionViewCell.identifier, for: indexPath) as? TamagotchiCollectionViewCell else {
             print("TamagotchiCollectionViewCell로 다운캐스팅 실패")
             return UICollectionViewCell()
         }
-        
-        cell.TamagotchiImageView.image = UIImage(named: tamagochiInfo.tamagotchi[indexPath.row].appearance)
-        cell.TamagotchiNameLabel.text = tamagochiInfo.tamagotchi[indexPath.row].name
-        
-        cell.TamagotchiNameLabel.layer.borderColor = Color.bound.CGcolor
-        cell.TamagotchiNameLabel.layer.borderWidth = 1
-        cell.TamagotchiNameLabel.layer.cornerRadius = 5
-        cell.TamagotchiNameLabel.font = .boldSystemFont(ofSize: 13)
-        cell.TamagotchiNameLabel.textColor = Color.font.UIcolor
-        
-        
+
+        cell.configureCell(row: row)
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
+            print("DetailViewController로 다운캐스팅 실패")
+            return
+        }
+        vc.modalTransitionStyle = .coverVertical
+        vc.modalPresentationStyle = .fullScreen
+        
+        
+        
+        present(vc, animated: true)
+    }
+    
+    
+    
+    
+    
+    
+    
     
     func configureFlowLayout(){
         
