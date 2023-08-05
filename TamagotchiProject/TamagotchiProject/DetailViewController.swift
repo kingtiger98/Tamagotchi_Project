@@ -9,8 +9,20 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    var imageContent1: String? // 1렙사진
+    var imageContent2: String? // 2렙사진
+    var imageContent3: String? // 3렙사진
+    var imageContent4: String? // 4렙사진
+    var imageContent5: String? // 5렙사진
+    var imageContent6: String? // 6렙사진 _ 다마고치 선택화면
+    var imageContent7: String? // 7렙사진
+    var imageContent8: String? // 8렙사진
+    var imageContent9: String? // 9렙사진
+
     
-    var imageContens: String?
+    
+    
+    
     var nameContens: String?
     var introduceContents: String?
     
@@ -40,7 +52,7 @@ class DetailViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    
+    // GrowViewController로 값전달
     @IBAction func startButtonClicked(_ sender: UIButton) {
         
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "GrowViewController") as? GrowViewController else {
@@ -48,7 +60,16 @@ class DetailViewController: UIViewController {
             return
         }
                 
-        vc.imageContents = imageContens
+        vc.imageContent1 = imageContent1
+        vc.imageContent2 = imageContent2
+        vc.imageContent3 = imageContent3
+        vc.imageContent4 = imageContent4
+        vc.imageContent5 = imageContent5
+        vc.imageContent6 = imageContent6
+        vc.imageContent7 = imageContent7
+        vc.imageContent8 = imageContent8
+        vc.imageContent9 = imageContent9
+        
         vc.nameContents = nameContens
         
         let nav = UINavigationController(rootViewController: vc)
@@ -58,15 +79,28 @@ class DetailViewController: UIViewController {
     }
     
     func configureCell(row: TamagotchiState) {
-        imageContens = row.appearance
+        imageContent1 = row.levelOneAppearance
+        imageContent2 = row.levelTwoAppearance
+        imageContent3 = row.levelThreeAppearance
+        imageContent4 = row.levelFourAppearance
+        imageContent5 = row.levelFiveAppearance
+        imageContent6 = row.levelSixAppearance
+        imageContent7 = row.levelSevenAppearance
+        imageContent8 = row.levelEightAppearance
+        imageContent9 = row.levelNineAppearance
+
+        
+        
         nameContens = row.name
         introduceContents = row.introduce
+        
+        imageContent1 = row.levelOneAppearance
     }
     
     
     func setData() {
         
-        guard let image = imageContens, let name = nameContens, let introduce = introduceContents else {
+        guard let image = imageContent6, let name = nameContens, let introduce = introduceContents else {
             print("값을 못가져왔어요!")
             return
         }

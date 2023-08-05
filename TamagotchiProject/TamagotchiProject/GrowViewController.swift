@@ -8,12 +8,27 @@
 import UIKit
 
 class GrowViewController: UIViewController {
-
+    
+    let defaults = UserDefaults.standard
+    
     var riceTotal: Double = 0.0
     var waterTotal: Double = 0.0
     var level: Int = 0
+    var appearance: String = ""
     
-    var imageContents: String?
+    var riceInputNum: Double = 1.0
+    var waterInputNum: Double = 1.0
+
+    var imageContent1: String? // 1렙사진
+    var imageContent2: String? // 2렙사진
+    var imageContent3: String? // 3렙사진
+    var imageContent4: String? // 4렙사진
+    var imageContent5: String? // 5렙사진
+    var imageContent6: String? // 6렙사진
+    var imageContent7: String? // 7렙사진
+    var imageContent8: String? // 8렙사진
+    var imageContent9: String? // 9렙사진
+    
     var nameContents: String?
     
     @IBOutlet var backView: UIView!
@@ -31,8 +46,23 @@ class GrowViewController: UIViewController {
     @IBOutlet weak var waterButton: UIButton!
     
     
+    @IBOutlet weak var settingBarButtonItem: UIBarButtonItem!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        setData()
+
+        riceTotal = defaults.double(forKey: Food.rice.count)
+        waterTotal = defaults.double(forKey: Food.water.count)
+        
+        // 화면 시작시 저장됐던 값 보이게
+        TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
+        imageChange()
+        
+        
         
         configureNavigationBar()
         configureBackView()
@@ -42,42 +72,69 @@ class GrowViewController: UIViewController {
         configureInputTextField()
         configureFeedingButtons()
         
-        setData()
+
+        
+        
     }
     
     
     @IBAction func riceButtonClicked(_ sender: UIButton) {
-                
+        
+        
+        if riceInputTextField.text != "" {
+            riceInputNum = Double(riceInputTextField.text!)!
+            riceInputTextField.text = ""
+        } else {
+            riceInputNum = 1
+        }
+        
         // 1. UserDefault에 탭한 값을 더해 저장한다.
-        riceTotal = UserDefaults.standard.double(forKey: Food.rice.count) + 1.0
+        riceTotal = defaults.double(forKey: Food.rice.count) + riceInputNum
         print(riceTotal)
 
         // 2. 다시 UserDefault에 저장
-        UserDefaults.standard.set(riceTotal, forKey: Food.rice.count)
+        defaults.set(riceTotal, forKey: Food.rice.count)
         print(riceTotal)
-                
-        levelCalc()
-        TamagotchiStateLabel.text = "LV\(level)﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
+        
+        TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
+        imageChange()
 
     }
     
     
     @IBAction func waterButtonClicked(_ sender: UIButton) {
         
+        if waterInputTextField.text != "" {
+            waterInputNum = Double(waterInputTextField.text!)!
+            waterInputTextField.text = ""
+        }  else {
+            waterInputNum = 1
+        }
+        
         // 1. UserDefault에 탭한 값을 더해 저장한다.
-        waterTotal = UserDefaults.standard.double(forKey: Food.water.count) + 1.0
+        waterTotal = defaults.double(forKey: Food.water.count) + waterInputNum
         print(waterTotal)
 
         // 2. 다시 UserDefault에 저장
-        UserDefaults.standard.set(waterTotal, forKey: Food.water.count)
+        defaults.set(waterTotal, forKey: Food.water.count)
         print(waterTotal)
         
-        levelCalc()
-        TamagotchiStateLabel.text = "LV\(level)﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
-
+        TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
+        imageChange()
     }
     
-    func levelCalc() {
+    
+    
+    @IBAction func settingBarButttonItemClicked(_ sender: UIBarButtonItem) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as? SettingViewController else {
+            return
+        }
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    // 레벨 리턴
+    func levelCalc() -> Int {
         
         level = Int((riceTotal / 5.0) + (waterTotal / 2.0))
         
@@ -108,13 +165,37 @@ class GrowViewController: UIViewController {
             level = 10
         }
         
+        return level
+    }
+    
+    func imageChange() {
+        switch levelCalc() {
+        case 1:
+            TamagotchiImageView.image = UIImage(named: imageContent1!)
+        case 2:
+            TamagotchiImageView.image = UIImage(named: imageContent2!)
+        case 3:
+            TamagotchiImageView.image = UIImage(named: imageContent3!)
+        case 4:
+            TamagotchiImageView.image = UIImage(named: imageContent4!)
+        case 5:
+            TamagotchiImageView.image = UIImage(named: imageContent5!)
+        case 6:
+            TamagotchiImageView.image = UIImage(named: imageContent6!)
+        case 7:
+            TamagotchiImageView.image = UIImage(named: imageContent7!)
+        case 8:
+            TamagotchiImageView.image = UIImage(named: imageContent8!)
+        case 9:
+            TamagotchiImageView.image = UIImage(named: imageContent9!)
+        default:
+            TamagotchiImageView.image = UIImage(named: imageContent9!)
+        }
     }
     
     
-    
-    
     func setData() {
-        guard let image = imageContents, let name = nameContents else {
+        guard let image = imageContent1, let name = nameContents else {
             return
         }
         
@@ -123,6 +204,18 @@ class GrowViewController: UIViewController {
     }
 
     
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     func configureBackView() {
         backView.backgroundColor =  Color.background.UIcolor
         talkBackView.backgroundColor = .clear
@@ -130,7 +223,12 @@ class GrowViewController: UIViewController {
     
     
     func configureNavigationBar() {
-        navigationItem.title = "\(userName.name.rawValue)님의 다마고치"
+        navigationItem.title = "\(UserName.name.rawValue)님의 다마고치"
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .black
+        
+        settingBarButtonItem.image = UIImage(systemName: "person.circle")
+        settingBarButtonItem.tintColor = Color.font.UIcolor
     }
     
     

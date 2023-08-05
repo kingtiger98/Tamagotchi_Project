@@ -13,19 +13,6 @@ enum Tamagotchi: String {
     case pink = "반짝반짝 다마고치"
     case preparing = "준비중이에요"
     
-    var appearance: String {
-        switch self {
-        case .green:
-            return "1-6"
-        case .orange:
-            return "2-6"
-        case .pink:
-            return "3-6"
-        case .preparing:
-            return "noImage"
-        }
-    }
-    
     var introduce: String {
         switch self {
         case .green:
@@ -38,95 +25,378 @@ enum Tamagotchi: String {
             return "진로 고민중입니다,,,"
         }
     }
-}
-
-enum userName: String{
-    case name = "대장"
-}
-
-
-
-enum Color {
-    case background
-    case font
-    case bound
     
-    var UIcolor: UIColor {
+    var appearance1: String {
         switch self {
-        case .background:
-            return UIColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
-        case .font:
-            return UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
-        case .bound:
-            return UIColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
+        case .green:
+            return "1-1"
+        case .orange:
+            return "2-1"
+        case .pink:
+            return "3-1"
+        case .preparing:
+            return "noImage"
         }
     }
     
-    var CGcolor: CGColor {
+    var appearance2: String {
         switch self {
-        case .background:
-            return CGColor(red: 245/255, green: 252/255, blue: 252/255, alpha: 1)
-        case .font:
-            return CGColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
-        case .bound:
-            return CGColor(red: 77/255, green: 106/255, blue: 120/255, alpha: 1)
+        case .green:
+            return "1-2"
+        case .orange:
+            return "2-2"
+        case .pink:
+            return "3-2"
+        case .preparing:
+            return "noImage"
+        }
+    }
+    
+    var appearance3: String {
+        switch self {
+        case .green:
+            return "1-3"
+        case .orange:
+            return "2-3"
+        case .pink:
+            return "3-3"
+        case .preparing:
+            return "noImage"
+        }
+    }
+    
+    var appearance4: String {
+        switch self {
+        case .green:
+            return "1-4"
+        case .orange:
+            return "2-4"
+        case .pink:
+            return "3-4"
+        case .preparing:
+            return "noImage"
+        }
+    }
+    
+    var appearance5: String {
+        switch self {
+        case .green:
+            return "1-5"
+        case .orange:
+            return "2-5"
+        case .pink:
+            return "3-5"
+        case .preparing:
+            return "noImage"
+        }
+    }
+    
+    var appearance6: String {
+        switch self {
+        case .green:
+            return "1-6"
+        case .orange:
+            return "2-6"
+        case .pink:
+            return "3-6"
+        case .preparing:
+            return "noImage"
+        }
+    }
+    
+    var appearance7: String {
+        switch self {
+        case .green:
+            return "1-7"
+        case .orange:
+            return "2-7"
+        case .pink:
+            return "3-7"
+        case .preparing:
+            return "noImage"
+        }
+    }
+    
+    var appearance8: String {
+        switch self {
+        case .green:
+            return "1-8"
+        case .orange:
+            return "2-8"
+        case .pink:
+            return "3-8"
+        case .preparing:
+            return "noImage"
+        }
+    }
+    
+    
+    var appearance9: String {
+        switch self {
+        case .green:
+            return "1-9"
+        case .orange:
+            return "2-9"
+        case .pink:
+            return "3-9"
+        case .preparing:
+            return "noImage"
         }
     }
     
 }
 
 struct TamagotchiState{
-    var appearance: String
     var name: String
     var introduce: String
-    var level: Int = 1
-    var riceCount: Int = 0
-    var waterCount: Int = 0
-    var totalCount: Int = 0
-    
+    var levelOneAppearance: String
+    var levelTwoAppearance: String
+    var levelThreeAppearance: String
+    var levelFourAppearance: String
+    var levelFiveAppearance: String
+    var levelSixAppearance: String
+    var levelSevenAppearance: String
+    var levelEightAppearance: String
+    var levelNineAppearance: String
+
 }
 
 struct TamagotchiList{
-    var tamagotchi: [TamagotchiState] = [TamagotchiState(appearance: Tamagotchi.green.appearance, name: Tamagotchi.green.rawValue, introduce: Tamagotchi.green.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.orange.appearance, name: Tamagotchi.orange.rawValue, introduce: Tamagotchi.orange.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.pink.appearance, name: Tamagotchi.pink.rawValue, introduce: Tamagotchi.pink.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce),
-                                         TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce)
-    ]
+    var tamagotchi: [TamagotchiState] =
+        [
+            TamagotchiState(name: Tamagotchi.green.rawValue,
+                            introduce: Tamagotchi.green.introduce,
+                            levelOneAppearance: Tamagotchi.green.appearance1,
+                            levelTwoAppearance: Tamagotchi.green.appearance2,
+                            levelThreeAppearance: Tamagotchi.green.appearance3,
+                            levelFourAppearance: Tamagotchi.green.appearance4,
+                            levelFiveAppearance: Tamagotchi.green.appearance5,
+                            levelSixAppearance: Tamagotchi.green.appearance6,
+                            levelSevenAppearance: Tamagotchi.green.appearance7,
+                            levelEightAppearance: Tamagotchi.green.appearance8,
+                            levelNineAppearance: Tamagotchi.green.appearance9),
+            
+            TamagotchiState(name: Tamagotchi.orange.rawValue,
+                            introduce: Tamagotchi.orange.introduce,
+                            levelOneAppearance: Tamagotchi.orange.appearance1,
+                            levelTwoAppearance: Tamagotchi.orange.appearance2,
+                            levelThreeAppearance: Tamagotchi.orange.appearance3,
+                            levelFourAppearance: Tamagotchi.orange.appearance4,
+                            levelFiveAppearance: Tamagotchi.orange.appearance5,
+                            levelSixAppearance: Tamagotchi.orange.appearance6,
+                            levelSevenAppearance: Tamagotchi.orange.appearance7,
+                            levelEightAppearance: Tamagotchi.orange.appearance8,
+                            levelNineAppearance: Tamagotchi.orange.appearance9),
+            
+            TamagotchiState(name: Tamagotchi.pink.rawValue,
+                            introduce: Tamagotchi.pink.introduce,
+                            levelOneAppearance: Tamagotchi.pink.appearance1,
+                            levelTwoAppearance: Tamagotchi.pink.appearance2,
+                            levelThreeAppearance: Tamagotchi.pink.appearance3,
+                            levelFourAppearance: Tamagotchi.pink.appearance4,
+                            levelFiveAppearance: Tamagotchi.pink.appearance5,
+                            levelSixAppearance: Tamagotchi.pink.appearance6,
+                            levelSevenAppearance: Tamagotchi.pink.appearance7,
+                            levelEightAppearance: Tamagotchi.pink.appearance8,
+                            levelNineAppearance: Tamagotchi.pink.appearance9),
+            
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9),
+            
+            TamagotchiState(name: Tamagotchi.preparing.rawValue,
+                            introduce: Tamagotchi.preparing.introduce,
+                            levelOneAppearance: Tamagotchi.preparing.appearance1,
+                            levelTwoAppearance: Tamagotchi.preparing.appearance2,
+                            levelThreeAppearance: Tamagotchi.preparing.appearance3,
+                            levelFourAppearance: Tamagotchi.preparing.appearance4,
+                            levelFiveAppearance: Tamagotchi.preparing.appearance5,
+                            levelSixAppearance: Tamagotchi.preparing.appearance6,
+                            levelSevenAppearance: Tamagotchi.preparing.appearance7,
+                            levelEightAppearance: Tamagotchi.preparing.appearance8,
+                            levelNineAppearance: Tamagotchi.preparing.appearance9)
+        ]
 }
 
 
 
-enum Food: Int {
-    case rice = 0
-    case water
-    
-    var count: String {
-        switch self {
-        case .rice:
-            return "riceCount"
-        case .water:
-            return "waterCount"
-        }
-    }
-    
 
-    
-}
 
 

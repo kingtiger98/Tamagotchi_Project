@@ -13,15 +13,10 @@ class TamagotchiCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var TamagotchiImageView: UIImageView!
     @IBOutlet weak var TamagotchiNameLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
     
     func configureCell(row: TamagotchiState){
-        TamagotchiImageView.image = UIImage(named: row.appearance)
+        TamagotchiImageView.image = UIImage(named: row.levelSixAppearance)
         TamagotchiNameLabel.text = row.name
         
         TamagotchiNameLabel.layer.borderColor = Color.bound.CGcolor
