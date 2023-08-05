@@ -52,6 +52,8 @@ extension ChoiceViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return tamagochiInfo.tamagotchi.count
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let row: TamagotchiState = tamagochiInfo.tamagotchi[indexPath.row]
@@ -66,23 +68,24 @@ extension ChoiceViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let row: TamagotchiState = tamagochiInfo.tamagotchi[indexPath.row]
+        
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
             print("DetailViewController로 다운캐스팅 실패")
             return
         }
+        
         vc.modalTransitionStyle = .coverVertical
-        vc.modalPresentationStyle = .fullScreen
+        vc.modalPresentationStyle = .overCurrentContext
         
-        
-        
+        vc.configureCell(row: row)
+
         present(vc, animated: true)
     }
-    
-    
-    
-    
-    
     
     
     
