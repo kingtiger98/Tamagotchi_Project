@@ -38,8 +38,13 @@ enum Tamagotchi: String {
             return "진로 고민중입니다,,,"
         }
     }
-    
 }
+
+enum userName: String{
+    case name = "대장"
+}
+
+
 
 enum Color {
     case background
@@ -77,6 +82,8 @@ struct TamagotchiState{
     var level: Int = 1
     var riceCount: Int = 0
     var waterCount: Int = 0
+    var totalCount: Int = 0
+    
 }
 
 struct TamagotchiList{
@@ -102,3 +109,24 @@ struct TamagotchiList{
                                          TamagotchiState(appearance: Tamagotchi.preparing.appearance, name: Tamagotchi.preparing.rawValue, introduce: Tamagotchi.preparing.introduce)
     ]
 }
+
+
+
+enum Food: Int {
+    case rice = 0
+    case water
+    
+    var count: String {
+        switch self {
+        case .rice:
+            return "riceCount"
+        case .water:
+            return "waterCount"
+        }
+    }
+    
+
+    
+}
+
+

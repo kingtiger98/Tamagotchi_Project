@@ -48,6 +48,9 @@ class DetailViewController: UIViewController {
             return
         }
                 
+        vc.imageContents = imageContens
+        vc.nameContents = nameContens
+        
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         
@@ -96,11 +99,13 @@ class DetailViewController: UIViewController {
         startButton.backgroundColor = Color.background.UIcolor
 
         
-        cancleButton.layer.addBorder(edge: .top, color: Color.font.UIcolor, thickness: 0.5)
-        cancleButton.layer.borderColor = Color.font.CGcolor
+        //cancleButton.layer.addBorder(edge: .top, color: Color.font.UIcolor, thickness: 0.5)
+        cancleButton.layer.borderWidth = 0.5
+        cancleButton.layer.borderColor = Color.bound.CGcolor
 
-        startButton.layer.addBorder(edge: .top, color: Color.font.UIcolor, thickness: 0.5)
-        startButton.layer.borderColor = Color.font.CGcolor
+        //startButton.layer.addBorder(edge: .top, color: Color.font.UIcolor, thickness: 0.5)
+        startButton.layer.borderWidth = 0.5
+        startButton.layer.borderColor = Color.bound.CGcolor
     }
 
     func configuerTamagochiNameLabel() {
