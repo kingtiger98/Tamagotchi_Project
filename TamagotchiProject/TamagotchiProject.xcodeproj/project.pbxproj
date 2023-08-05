@@ -17,6 +17,7 @@
 		4CAC167E2A7D4983003A56DC /* TamagotchiCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CAC167C2A7D4983003A56DC /* TamagotchiCollectionViewCell.xib */; };
 		4CAC16802A7D555D003A56DC /* Tamagotchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC167F2A7D555D003A56DC /* Tamagotchi.swift */; };
 		4CAC16842A7D6CE1003A56DC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC16832A7D6CE1003A56DC /* DetailViewController.swift */; };
+		4CAC16862A7DFAD7003A56DC /* GrowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC16852A7DFAD7003A56DC /* GrowViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		4CAC167C2A7D4983003A56DC /* TamagotchiCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TamagotchiCollectionViewCell.xib; sourceTree = "<group>"; };
 		4CAC167F2A7D555D003A56DC /* Tamagotchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tamagotchi.swift; sourceTree = "<group>"; };
 		4CAC16832A7D6CE1003A56DC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		4CAC16852A7DFAD7003A56DC /* GrowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				4CAC166D2A7D4209003A56DC /* Main.storyboard */,
 				4CAC16832A7D6CE1003A56DC /* DetailViewController.swift */,
 				4CAC167B2A7D4983003A56DC /* TamagotchiCollectionViewCell.swift */,
+				4CAC16852A7DFAD7003A56DC /* GrowViewController.swift */,
 				4CAC167F2A7D555D003A56DC /* Tamagotchi.swift */,
 				4CAC167C2A7D4983003A56DC /* TamagotchiCollectionViewCell.xib */,
 				4CAC16702A7D420A003A56DC /* Assets.xcassets */,
@@ -152,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CAC166C2A7D4209003A56DC /* ChoiceViewController.swift in Sources */,
+				4CAC16862A7DFAD7003A56DC /* GrowViewController.swift in Sources */,
 				4CAC167D2A7D4983003A56DC /* TamagotchiCollectionViewCell.swift in Sources */,
 				4CAC16682A7D4209003A56DC /* AppDelegate.swift in Sources */,
 				4CAC16842A7D6CE1003A56DC /* DetailViewController.swift in Sources */,

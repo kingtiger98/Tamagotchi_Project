@@ -43,6 +43,15 @@ class DetailViewController: UIViewController {
     
     @IBAction func startButtonClicked(_ sender: UIButton) {
         
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "GrowViewController") as? GrowViewController else {
+            print("GrowViewController로 다운캐스팅 실패")
+            return
+        }
+                
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        
+        present(nav, animated: false)
     }
     
     func configureCell(row: TamagotchiState) {
