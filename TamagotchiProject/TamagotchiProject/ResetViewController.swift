@@ -10,15 +10,40 @@ import UIKit
 class ResetViewController: UIViewController {
 
     @IBOutlet var backView: UIView!
-    
     @IBOutlet weak var resetView: UIView!
+    
+    
+    @IBOutlet weak var noResetButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureView()
+        configureButtons()
+        
     }
     
+    
+    @IBAction func noResetButtonClicked(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
+    
+    
+    @IBAction func resetButtonClicked(_ sender: UIButton) {
+        UserDefaults.standard.set(0, forKey: Food.rice.count)
+        UserDefaults.standard.set(0, forKey: Food.water.count)
+        
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ChoiceViewController") as? ChoiceViewController else {
+            return
+        }
+
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .fullScreen
+        
+        present(vc, animated: true)
+        
+    }
     
     
     // 배경뷰 불투명하게
@@ -28,5 +53,12 @@ class ResetViewController: UIViewController {
         resetView.layer.cornerRadius = 5
         resetView.layer.masksToBounds = true
     }
+ 
     
+    func configureButtons() {
+        
+        noResetButton.setTitle("아니!", for: .normal)
+        resetButton.setTitle("웅!", for: .normal)
+
+    }
 }
