@@ -36,8 +36,15 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.imageView?.image = UIImage(systemName: Setting.allCases[indexPath.row].image)
+        cell.imageView?.tintColor = Color.font.UIcolor
+        
         cell.textLabel?.text = Setting.allCases[indexPath.row].setting
+        cell.textLabel?.font = .boldSystemFont(ofSize: 13)
+        cell.textLabel?.textColor = Color.font.UIcolor
+        
         cell.detailTextLabel?.text = Setting.allCases[indexPath.row].subTitle
+        // 이름 변경하기 옆에 작게 내 이름 뜨게해야대***
+        
         
         return cell
     }
@@ -54,10 +61,22 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             print("다마고치 바꾸기 구현 해야함")
             
         } else if indexPath.row == 2 {
-            resetData()
+         
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "ResetViewController") as? ResetViewController else {
+                return
+            }
+            
+            vc.modalTransitionStyle = .coverVertical
+            vc.modalPresentationStyle = .overCurrentContext
+            
+            present(vc, animated: true)
+            
         }
 
     }
+    
+    
+
     
     
     func resetData() {

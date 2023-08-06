@@ -5,7 +5,7 @@
 //  Created by 황재하 on 8/5/23.
 //
 
-import Foundation
+import UIKit
 
 enum Setting: Int, CaseIterable {
     
@@ -39,7 +39,7 @@ enum Setting: Int, CaseIterable {
     var subTitle: String {
         switch self {
         case .nameSet:
-            return "대장"
+            return ""
         case .tamagotchiSet:
             return ""
         case .dataSet:

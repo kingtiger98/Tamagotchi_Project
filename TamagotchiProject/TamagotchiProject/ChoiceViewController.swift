@@ -30,7 +30,12 @@ class ChoiceViewController: UIViewController {
         
         configureFlowLayout()
         
+//        UserDefaults.standard.set(0, forKey: Food.rice.count)
+//        UserDefaults.standard.set(0, forKey: Food.water.count)
         
+        // 이름 만들기
+        print(UserDefaults.standard.string(forKey: "nickName")!)
+
         
     }
     

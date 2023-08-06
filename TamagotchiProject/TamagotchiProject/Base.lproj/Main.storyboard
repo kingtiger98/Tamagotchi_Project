@@ -320,7 +320,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingTableViewCell" textLabel="4fT-eJ-AEB" detailTextLabel="EXF-DX-Qqx" rowHeight="49" style="IBUITableViewCellStyleValue1" id="QNr-Qe-B43" customClass="SettingTableViewCell" customModule="TamagotchiProject" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingTableViewCell" textLabel="4fT-eJ-AEB" detailTextLabel="EXF-DX-Qqx" rowHeight="49" style="IBUITableViewCellStyleValue1" id="QNr-Qe-B43" customClass="SettingTableViewCell" customModule="TamagotchiProject" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="49"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QNr-Qe-B43" id="IRn-Ni-aiz">
@@ -402,6 +402,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qws-2N-2N5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3407" y="-246"/>
+        </scene>
+        <!--Reset View Controller-->
+        <scene sceneID="lNO-c7-4b7">
+            <objects>
+                <viewController storyboardIdentifier="ResetViewController" id="DVz-hC-Npj" customClass="ResetViewController" customModule="TamagotchiProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MWl-RP-zyT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g0Q-E3-hob">
+                                <rect key="frame" x="76" y="275" width="240" height="215"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="whq-Hj-abf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="backView" destination="MWl-RP-zyT" id="fVD-JQ-DLx"/>
+                        <outlet property="resetView" destination="g0Q-E3-hob" id="xxT-qe-2dA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4r2-Ls-17x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4144" y="-246"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dqb-6y-Btn">

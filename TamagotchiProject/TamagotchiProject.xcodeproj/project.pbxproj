@@ -25,6 +25,7 @@
 		4CE5A4202A7E650800EEB1D6 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5A41F2A7E650800EEB1D6 /* Setting.swift */; };
 		4CE5A4222A7E69E000EEB1D6 /* NameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5A4212A7E69E000EEB1D6 /* NameSettingViewController.swift */; };
 		4CE5A42C2A7E9EF200EEB1D6 /* FoodCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5A42B2A7E9EF200EEB1D6 /* FoodCount.swift */; };
+		4CE5A42E2A7F933300EEB1D6 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE5A42D2A7F933300EEB1D6 /* ResetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		4CE5A41F2A7E650800EEB1D6 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		4CE5A4212A7E69E000EEB1D6 /* NameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSettingViewController.swift; sourceTree = "<group>"; };
 		4CE5A42B2A7E9EF200EEB1D6 /* FoodCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCount.swift; sourceTree = "<group>"; };
+		4CE5A42D2A7F933300EEB1D6 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				4CAC16852A7DFAD7003A56DC /* GrowViewController.swift */,
 				4CAC168B2A7E53AF003A56DC /* SettingViewController.swift */,
 				4CAC168D2A7E5D7C003A56DC /* SettingTableViewCell.swift */,
+				4CE5A42D2A7F933300EEB1D6 /* ResetViewController.swift */,
 				4CE5A4212A7E69E000EEB1D6 /* NameSettingViewController.swift */,
 				4CAC16722A7D420A003A56DC /* LaunchScreen.storyboard */,
 				4CAC167F2A7D555D003A56DC /* Tamagotchi.swift */,
@@ -179,6 +182,7 @@
 				4CAC166C2A7D4209003A56DC /* ChoiceViewController.swift in Sources */,
 				4CE5A4202A7E650800EEB1D6 /* Setting.swift in Sources */,
 				4CAC16862A7DFAD7003A56DC /* GrowViewController.swift in Sources */,
+				4CE5A42E2A7F933300EEB1D6 /* ResetViewController.swift in Sources */,
 				4CAC167D2A7D4983003A56DC /* TamagotchiCollectionViewCell.swift in Sources */,
 				4CAC16682A7D4209003A56DC /* AppDelegate.swift in Sources */,
 				4CAC16842A7D6CE1003A56DC /* DetailViewController.swift in Sources */,
