@@ -9,6 +9,9 @@ import UIKit
 
 class NameSettingViewController: UIViewController {
 
+    
+
+    
     @IBOutlet weak var newNameTextField: UITextField!
     @IBOutlet weak var newNameSaveBarButtonItem: UIBarButtonItem!
     

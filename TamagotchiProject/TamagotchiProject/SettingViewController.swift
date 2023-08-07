@@ -21,8 +21,17 @@ class SettingViewController: UIViewController {
         navigationItem.backBarButtonItem?.title = ""
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
 
 }
+
+
+
+
 
 extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,6 +68,21 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 1 {
 
             print("다마고치 바꾸기 구현 해야함")
+            
+            // 1.
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            let sceneDelegate = windowScene?.delegate as? SceneDelegate
+            
+            // 2.
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ChoiceViewController") as! ChoiceViewController
+            let nav = UINavigationController(rootViewController: vc)
+            
+            sceneDelegate?.window?.rootViewController = nav
+            sceneDelegate?.window?.makeKeyAndVisible()
+            
+            
+            
             
         } else if indexPath.row == 2 {
          

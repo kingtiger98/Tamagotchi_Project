@@ -9,6 +9,7 @@ import UIKit
 
 enum Setting: Int, CaseIterable {
     
+    
     case nameSet = 0
     case tamagotchiSet
     case dataSet
@@ -36,10 +37,11 @@ enum Setting: Int, CaseIterable {
         }
     }
     
+    
     var subTitle: String {
         switch self {
         case .nameSet:
-            return "\(String(describing: UserDefaults.standard.string(forKey: "nickName") ?? "대장"))"
+            return "\(UserDefaults.standard.string(forKey: "nickName") ?? "대장")"
         case .tamagotchiSet:
             return ""
         case .dataSet:
