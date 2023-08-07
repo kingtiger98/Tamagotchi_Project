@@ -38,11 +38,14 @@ class ResetViewController: UIViewController {
             return
         }
 
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .fullScreen
+        vc.navigationItem.title = "다마고치 선택하기"
         
-        present(vc, animated: true)
         
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        
+        present(nav, animated: true)
+
     }
     
     

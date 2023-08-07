@@ -66,8 +66,6 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             }
             navigationController?.pushViewController(vc1, animated: true)
         } else if indexPath.row == 1 {
-
-            print("다마고치 바꾸기 구현 해야함")
             
             // 1.
             let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
