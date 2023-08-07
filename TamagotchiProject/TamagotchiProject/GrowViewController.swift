@@ -290,7 +290,7 @@ class GrowViewController: UIViewController {
         guard let defaultName = UserDefaults.standard.string(forKey: "nickName") else {
             return
         }
-        TamagotchiTalkTextView.text = ["\(defaultName)님 잠자지 말고 코딩 하셔야죠 ㅎㅎ", "\(defaultName)님 복습하고 잠자시나요??", "\(defaultName)님 현생으로 돌아오세요"].randomElement()
+        TamagotchiTalkTextView.text = ["\(defaultName)님 잠자지 말고 코딩 하셔야죠 ㅎㅎ", "\(defaultName)님 복습하고 잠자시나요??", "\(defaultName)님 현생으로 돌아오세요", "코딩은 어렵지 않아요 \(defaultName)님 복습!!"].randomElement()
     }
     
     // 닉네임 변경***
