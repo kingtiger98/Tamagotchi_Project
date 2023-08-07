@@ -20,7 +20,7 @@ class ResetViewController: UIViewController {
         super.viewDidLoad()
 
         configureView()
-        configureButtons()
+        configureButton()
         
     }
     
@@ -55,10 +55,28 @@ class ResetViewController: UIViewController {
     }
  
     
-    func configureButtons() {
+    
+    func configureButton() {
         
         noResetButton.setTitle("아니!", for: .normal)
         resetButton.setTitle("웅!", for: .normal)
 
+        noResetButton.setTitleColor(.lightGray, for: .highlighted)
+        resetButton.setTitleColor(.lightGray, for: .highlighted)
+
+        noResetButton.tintColor = Color.font.UIcolor
+        resetButton.tintColor = Color.font.UIcolor
+
+        noResetButton.backgroundColor = .systemGray6
+        resetButton.backgroundColor = Color.background.UIcolor
+
+        
+        //cancleButton.layer.addBorder(edge: .top, color: Color.font.UIcolor, thickness: 0.5)
+        //noResetButton.layer.borderWidth = 0.5
+        //noResetButton.layer.borderColor = Color.bound.CGcolor
+
+        //startButton.layer.addBorder(edge: .top, color: Color.font.UIcolor, thickness: 0.5)
+        //resetButton.layer.borderWidth = 0.5
+        //resetButton.layer.borderColor = Color.bound.CGcolor
     }
 }

@@ -63,8 +63,6 @@ class GrowViewController: UIViewController {
         // 화면 시작시 저장됐던 값 보이게
         stataeChange()
         
-        
-        
         configureNavigationBar()
         configureBackView()
         
@@ -73,15 +71,79 @@ class GrowViewController: UIViewController {
         configureInputTextField()
         configureFeedingButtons()
         
+        // 첫 이름 설정
+        // UserDefaults.standard.set("대장", forKey: "nickName")
+
+        print(#function)
+
     }
+    
+    var defaultName: String?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureNavigationBar()
+
+        
+        guard let defaultName = UserDefaults.standard.string(forKey: "nickName") else {
+            return
+        }
+        
+        
+        settingBarButtonItem.image = UIImage(systemName: "person.circle")
+        settingBarButtonItem.tintColor = Color.font.UIcolor
+        navigationItem.backBarButtonItem?.title = ""
+        
+        // 이름 가져오기***
+        navigationItem.title = "\(defaultName)님의 다마고치"
+        
+        // 말풍성 바꾸기
+        changeTalk()
+        
+        
+        
+        print(UserDefaults.standard.string(forKey: "tamagotchiName")!)
+        print(UserDefaults.standard.string(forKey: "image9")!)
+
+        switch levelCalc() {
+        case 1:
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image1")!)
+            TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
+        case 2:
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image2")!)
+            TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
+        case 3:
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image3")!)
+            TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
+        case 4:
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image4")!)
+            TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
+        case 5:
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image5")!)
+            TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
+        case 6:
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image6")!)
+            TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
+        case 7:
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image7")!)
+            TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
+        case 8:
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image8")!)
+            TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
+        case 9:
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image9")!)
+            TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
+        default:
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image9")!)
+            TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
+
+        }
+        
     }
     
     
     @IBAction func riceButtonClicked(_ sender: UIButton) {
+        
+        changeTalk()
         
         guard let count = riceInputTextField.text else {
             return
@@ -110,6 +172,8 @@ class GrowViewController: UIViewController {
 
     }
     @IBAction func waterButtonClicked(_ sender: UIButton) {
+        
+        changeTalk()
         
         guard let count = waterInputTextField.text else {
             return
@@ -182,50 +246,51 @@ class GrowViewController: UIViewController {
     // 레벨별 이미지 변경
     func stataeChange() {
         
-        guard let image1 = imageContent1, let image2 = imageContent2, let image3 = imageContent3, let image4 = imageContent4, let image5 = imageContent5,
-              let image6 = imageContent6, let image7 = imageContent7, let image8 = imageContent8, let image9 = imageContent9 else {
-            return
-        }
-        
+//        guard let image1 = imageContent1, let image2 = imageContent2, let image3 = imageContent3, let image4 = imageContent4, let image5 = imageContent5,
+//              let image6 = imageContent6, let image7 = imageContent7, let image8 = imageContent8, let image9 = imageContent9 else {
+//            return
+//        }
+                
         switch levelCalc() {
         case 1:
-            TamagotchiImageView.image = UIImage(named: image1)
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image1")!)
             TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
         case 2:
-            TamagotchiImageView.image = UIImage(named: image2)
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image2")!)
             TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
         case 3:
-            TamagotchiImageView.image = UIImage(named: image3)
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image3")!)
             TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
         case 4:
-            TamagotchiImageView.image = UIImage(named: image4)
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image4")!)
             TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
         case 5:
-            TamagotchiImageView.image = UIImage(named: image5)
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image5")!)
             TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
         case 6:
-            TamagotchiImageView.image = UIImage(named: image6)
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image6")!)
             TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
         case 7:
-            TamagotchiImageView.image = UIImage(named: image7)
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image7")!)
             TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
         case 8:
-            TamagotchiImageView.image = UIImage(named: image8)
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image8")!)
             TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
         case 9:
-            TamagotchiImageView.image = UIImage(named: image9)
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image9")!)
             TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
         default:
-            TamagotchiImageView.image = UIImage(named: image9)
+            TamagotchiImageView.image = UIImage(named: UserDefaults.standard.string(forKey: "image9")!)
             TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
 
-        }
-    }
+        }    }
     
     // 말풍선 텍스트 변경***
     func changeTalk() {
-        
-        TamagotchiTalkTextView.text = ""
+        guard let defaultName = UserDefaults.standard.string(forKey: "nickName") else {
+            return
+        }
+        TamagotchiTalkTextView.text = ["\(defaultName)님 잠자지 말고 코딩 하셔야죠 ㅎㅎ", "\(defaultName)님 복습하고 잠자시나요??", "\(defaultName)님 현생으로 돌아오세요"].randomElement()
     }
     
     // 닉네임 변경***
@@ -243,19 +308,11 @@ class GrowViewController: UIViewController {
         
         TamagotchiImageView.image = UIImage(named: image)
         TamagotchiNameLabel.text = name
+        
+        print(image, name)
     }
 
-    
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     func configureBackView() {

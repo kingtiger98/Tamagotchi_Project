@@ -12,7 +12,7 @@ class NameSettingViewController: UIViewController {
     @IBOutlet weak var newNameTextField: UITextField!
     @IBOutlet weak var newNameSaveBarButtonItem: UIBarButtonItem!
     
-    var newDefaultsName: String = ""
+    // var newDefaultsName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,9 @@ class NameSettingViewController: UIViewController {
         configureNavigationBar()
         configureTextField()
     }
+    
+    
+    
 
     // 새이름 지정
     @IBAction func newNameSaveBarButtonClicked(_ sender: UIBarButtonItem) {

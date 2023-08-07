@@ -10,13 +10,50 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        guard let scene = (scene as? UIWindowScene) else { return }
+        
+        // window란? : 뷰 밑에 큰 도화지
+        window = UIWindow(windowScene: scene)
+
+        // UserDefaults에서 "isFirstLaunch" 키를 확인하여 첫 실행 여부를 판단합니다.
+        var isFirstLaunch: Bool = UserDefaults.standard.bool(forKey: "isFirstLaunch")
+        // 디버깅
+        // isFirstLaunch = false
+
+        print(isFirstLaunch)
+
+        if isFirstLaunch == false {
+
+            // 첫 실행 여부를 true로 설정하여 다음에 앱이 실행될 때 첫 실행이 아닌 것으로 표시합니다.
+            //UserDefaults.standard.set(true, forKey: "isFirstLaunch")
+            isFirstLaunch = true
+
+            // 첫 실행인 경우 다른 화면을 보여주기 위해 초기화면 대신 새로운 화면을 표시합니다.
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            guard let vc = sb.instantiateViewController(withIdentifier: "ChoiceViewController") as? ChoiceViewController else {
+                return
+            }
+            
+            let nav = UINavigationController(rootViewController: vc)
+
+            window?.rootViewController = nav
+            
+        } else if isFirstLaunch == true {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            guard let vc = sb.instantiateViewController(withIdentifier: "GrowViewController") as? GrowViewController else {
+                return
+            }
+            
+            let nav = UINavigationController(rootViewController: vc)
+            
+            window?.rootViewController = nav
+        }
+
+        window?.makeKeyAndVisible()
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

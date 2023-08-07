@@ -15,7 +15,7 @@ class ChoiceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         TamagotchiCollectionView.delegate = self
         TamagotchiCollectionView.dataSource = self
         
@@ -33,10 +33,10 @@ class ChoiceViewController: UIViewController {
 //        UserDefaults.standard.set(0, forKey: Food.rice.count)
 //        UserDefaults.standard.set(0, forKey: Food.water.count)
         
-        // 이름 만들기
-        print(UserDefaults.standard.string(forKey: "nickName")!)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
 
-        
     }
     
     func configureNavigationBar() {

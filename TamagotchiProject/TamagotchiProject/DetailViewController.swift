@@ -40,6 +40,9 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 디폴트 이름 "대장" 지정***
+        UserDefaults.standard.set("대장", forKey: "nickName")
+        
         setData()
         
         configureView()
@@ -48,6 +51,8 @@ class DetailViewController: UIViewController {
         configureTamagotchiIntroduce()
     }
     
+
+    
     @IBAction func cancleButtonClicked(_ sender: UIButton) {
         dismiss(animated: true)
     }
@@ -55,11 +60,28 @@ class DetailViewController: UIViewController {
     // GrowViewController로 값전달
     @IBAction func startButtonClicked(_ sender: UIButton) {
         
+        UserDefaults.standard.set(true, forKey: "isFirstLaunch")
+        print(UserDefaults.standard.bool(forKey: "isFirstLaunch"))
+
+        
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "GrowViewController") as? GrowViewController else {
             print("GrowViewController로 다운캐스팅 실패")
             return
         }
-                
+           
+        //****
+        UserDefaults.standard.set(imageContent1, forKey: "image1")
+        UserDefaults.standard.set(imageContent2, forKey: "image2")
+        UserDefaults.standard.set(imageContent3, forKey: "image3")
+        UserDefaults.standard.set(imageContent4, forKey: "image4")
+        UserDefaults.standard.set(imageContent5, forKey: "image5")
+        UserDefaults.standard.set(imageContent6, forKey: "image6")
+        UserDefaults.standard.set(imageContent7, forKey: "image7")
+        UserDefaults.standard.set(imageContent8, forKey: "image8")
+        UserDefaults.standard.set(imageContent9, forKey: "image9")
+
+        UserDefaults.standard.set(nameContens, forKey: "tamagotchiName")
+        
         vc.imageContent1 = imageContent1
         vc.imageContent2 = imageContent2
         vc.imageContent3 = imageContent3
@@ -104,6 +126,7 @@ class DetailViewController: UIViewController {
             print("값을 못가져왔어요!")
             return
         }
+                
         
         TamagotchiImageView.image = UIImage(named: "\(image)")
         TamagotchiNameLabel.text = name

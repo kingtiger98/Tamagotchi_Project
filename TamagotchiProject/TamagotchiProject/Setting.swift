@@ -39,7 +39,7 @@ enum Setting: Int, CaseIterable {
     var subTitle: String {
         switch self {
         case .nameSet:
-            return ""
+            return "\(String(describing: UserDefaults.standard.string(forKey: "nickName") ?? "대장"))"
         case .tamagotchiSet:
             return ""
         case .dataSet:
