@@ -30,8 +30,6 @@ class ChoiceViewController: UIViewController {
         
         configureFlowLayout()
         
-//        UserDefaults.standard.set(0, forKey: Food.rice.count)
-//        UserDefaults.standard.set(0, forKey: Food.water.count)
         
     }
     
@@ -79,7 +77,16 @@ extension ChoiceViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         let row: TamagotchiState = tamagochiInfo.tamagotchi[indexPath.row]
         
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
+        if row.name == "준비중이에요" {
+            let alert = UIAlertController(title: "다른 다마고치를 선택해주세요!", message: "준비중인 다마고치입니다.", preferredStyle: .alert)
+            
+            let ok = UIAlertAction(title: "돌아가기", style: .default)
+            alert.addAction(ok)
+            
+            present(alert, animated: true)
+        }
+        
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else {
             print("DetailViewController로 다운캐스팅 실패")
             return
         }

@@ -9,6 +9,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    static let identifier = "DetailViewController"
+    
     var imageContent1: String? // 1렙사진
     var imageContent2: String? // 2렙사진
     var imageContent3: String? // 3렙사진
@@ -18,14 +20,10 @@ class DetailViewController: UIViewController {
     var imageContent7: String? // 7렙사진
     var imageContent8: String? // 8렙사진
     var imageContent9: String? // 9렙사진
-
     
-    
-    
-    
+    // 선택한 다마고치의 데이터를 전달받을 변수
     var nameContens: String?
     var introduceContents: String?
-    
     
     @IBOutlet var backView: UIView!
     @IBOutlet weak var DetailBackView: UIView!
