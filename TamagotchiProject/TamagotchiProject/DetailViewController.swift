@@ -54,9 +54,10 @@ class DetailViewController: UIViewController {
     
     @IBAction func cancleButtonClicked(_ sender: UIButton) {
         dismiss(animated: true)
+    
     }
     
-    // GrowViewController로 값전달
+    // GrowViewController로 값전달***
     @IBAction func startButtonClicked(_ sender: UIButton) {
         
         UserDefaults.standard.set(true, forKey: "isFirstLaunch")
@@ -68,30 +69,31 @@ class DetailViewController: UIViewController {
             return
         }
            
-        //****
-        UserDefaults.standard.set(imageContent1, forKey: "image1")
-        UserDefaults.standard.set(imageContent2, forKey: "image2")
-        UserDefaults.standard.set(imageContent3, forKey: "image3")
-        UserDefaults.standard.set(imageContent4, forKey: "image4")
-        UserDefaults.standard.set(imageContent5, forKey: "image5")
-        UserDefaults.standard.set(imageContent6, forKey: "image6")
-        UserDefaults.standard.set(imageContent7, forKey: "image7")
-        UserDefaults.standard.set(imageContent8, forKey: "image8")
-        UserDefaults.standard.set(imageContent9, forKey: "image9")
+        // 다마고치의 레벨별 이미지 명을 모두 UserDefaults에서 알고 있을 필요가 있나? ***
+//        UserDefaults.standard.set(imageContent1, forKey: "image1")
+//        UserDefaults.standard.set(imageContent2, forKey: "image2")
+//        UserDefaults.standard.set(imageContent3, forKey: "image3")
+//        UserDefaults.standard.set(imageContent4, forKey: "image4")
+//        UserDefaults.standard.set(imageContent5, forKey: "image5")
+//        UserDefaults.standard.set(imageContent6, forKey: "image6")
+//        UserDefaults.standard.set(imageContent7, forKey: "image7")
+//        UserDefaults.standard.set(imageContent8, forKey: "image8")
+//        UserDefaults.standard.set(imageContent9, forKey: "image9")
+                
+        UserDefaults.standard.set(imageContent1, forKey: "TamagotchiImage")
+        UserDefaults.standard.set(nameContens, forKey: "TamagotchiName")
 
-        UserDefaults.standard.set(nameContens, forKey: "tamagotchiName")
         
-        vc.imageContent1 = imageContent1
-        vc.imageContent2 = imageContent2
-        vc.imageContent3 = imageContent3
-        vc.imageContent4 = imageContent4
-        vc.imageContent5 = imageContent5
-        vc.imageContent6 = imageContent6
-        vc.imageContent7 = imageContent7
-        vc.imageContent8 = imageContent8
-        vc.imageContent9 = imageContent9
+//        vc.growImageContent1 = imageContent1
+//        vc.growImageContent2 = imageContent2
+//        vc.growImageContent3 = imageContent3
+//        vc.growImageContent4 = imageContent4
+//        vc.growImageContent5 = imageContent5
+//        vc.growImageContent6 = imageContent6
+//        vc.growImageContent7 = imageContent7
+//        vc.growImageContent8 = imageContent8
+//        vc.growImageContent9 = imageContent9
         
-        vc.nameContents = nameContens
         
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
@@ -125,11 +127,13 @@ class DetailViewController: UIViewController {
             print("값을 못가져왔어요!")
             return
         }
-                
         
         TamagotchiImageView.image = UIImage(named: "\(image)")
         TamagotchiNameLabel.text = name
         TamagotchiIntroduceTextView.text = introduce
+        
+        
+        
     }
     
     
@@ -141,8 +145,6 @@ class DetailViewController: UIViewController {
         DetailBackView.layer.masksToBounds = true
     }
     
-    
-    
     func configureButton(_ button: UIButton, title: String, backgroundColor: UIColor, highlightedColor: UIColor, tintColor: UIColor, borderColor: CGColor) {
         button.setTitle(title, for: .normal)
         button.backgroundColor = backgroundColor
@@ -151,12 +153,10 @@ class DetailViewController: UIViewController {
         button.layer.borderWidth = 0.5
         button.layer.borderColor = borderColor
     }
-
     func configureButtons() {
         configureButton(cancleButton, title: "취소", backgroundColor: .systemGray6, highlightedColor: .lightGray, tintColor: Color.font.UIcolor, borderColor: Color.bound.CGcolor)
         configureButton(startButton, title: "시작하기", backgroundColor: Color.background.UIcolor, highlightedColor: .lightGray, tintColor: Color.font.UIcolor, borderColor: Color.bound.CGcolor)
     }
-    
 
     func configuerTamagochiNameLabel() {
         

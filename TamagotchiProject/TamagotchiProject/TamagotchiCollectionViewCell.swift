@@ -15,7 +15,7 @@ class TamagotchiCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var TamagotchiNameLabel: UILabel!
 
     
-    func configureCell(row: TamagotchiState){
+    func configureTamagotchiLsit(row: TamagotchiState){
         TamagotchiImageView.image = UIImage(named: row.levelSixAppearance)
         TamagotchiNameLabel.text = row.name
         

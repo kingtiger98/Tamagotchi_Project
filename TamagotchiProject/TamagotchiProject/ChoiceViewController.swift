@@ -27,14 +27,8 @@ class ChoiceViewController: UIViewController {
         
         configureNavigationBar()
         configureTamagotchiCollectionView()
-        
-        configureFlowLayout()
-        
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
 
+        configureFlowLayout()
     }
     
     func configureNavigationBar() {
@@ -66,7 +60,7 @@ extension ChoiceViewController: UICollectionViewDelegate, UICollectionViewDataSo
             return UICollectionViewCell()
         }
 
-        cell.configureCell(row: row)
+        cell.configureTamagotchiLsit(row: row)
         
         return cell
     }
@@ -77,6 +71,7 @@ extension ChoiceViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         let row: TamagotchiState = tamagochiInfo.tamagotchi[indexPath.row]
         
+        // 준비중인 다마고치 선택시 실행
         if row.name == "준비중이에요" {
             let alert = UIAlertController(title: "다른 다마고치를 선택해주세요!", message: "준비중인 다마고치입니다.", preferredStyle: .alert)
             
