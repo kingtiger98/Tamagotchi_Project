@@ -258,29 +258,25 @@ class GrowViewController: UIViewController {
             level = 1
         case 20..<30:
             level = 2
-        case 30..<40:
-            level = 3
-        case 40..<50:
-            level = 4
-        case 50..<60:
-            level = 5
-        case 60..<70:
-            level = 6
-        case 70..<80:
-            level = 7
-        case 80..<90:
-            level = 8
-        case 90..<100:
-            level = 10
+        case 30..<100:
+            level = level/10 + 1
         case 100...:
             level = 10
         default:
-            level = 10
+            level = 1
         }
         
         return level
     }
     
+//    switch calculatedLevel {
+//    case 30..<100:
+//        return calculatedLevel / 10 + 1
+//    case 100...:
+//        return 10
+//    default:
+//        return 1
+//    }
 
     
     // 말풍선 텍스트 변경***
