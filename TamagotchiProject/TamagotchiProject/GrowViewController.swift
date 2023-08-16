@@ -87,16 +87,44 @@ class GrowViewController: UIViewController {
    }
 
     
+    func valiNumberInputError(number: String) throws -> Bool {
+        
+        // 빈 칸일 경우
+        guard !(number.isEmpty) else {
+            print("빈 값")
+            throw ValidationError.emptyNumber
+        }
+        
+        // 숫자 여부
+        guard Int(number) != nil else {
+            print("숫자 아냐")
+            throw ValidationError.isNotNumber
+        }
+        
+        // 숫자 범위 벗어남
+        guard (Int(number)! < 0) && (Int(number)! > 99) else {
+            print("숫자 범위가 안맞아")
+            throw ValidationError.isOverNumber
+        }
+        
+        return true
+    }
+    
     
     @IBAction func riceButtonClicked(_ sender: UIButton) {
+        
         changeTalk()
         
-        guard let count = riceInputTextField.text else {
-            return
+        guard let num = riceInputTextField.text else { return }
+        
+        do {
+            let result = try valiNumberInputError(number: num)
+        } catch {
+            print("ERROR")
         }
         
         if riceInputTextField.text != "" {
-            riceInputNum = Double(count) ?? 100
+            riceInputNum = Double(num) ?? 100
             riceInputTextField.text = ""
         } else {
             riceInputNum = 1
@@ -113,9 +141,34 @@ class GrowViewController: UIViewController {
         // defaults.set(riceTotal, forKey: Food.rice.count)
         UserDefaultsHelper.standard.ricecount = riceTotal
         
-        TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
-        
         stateChange()
+        
+//        changeTalk()
+//
+//        guard let count = riceInputTextField.text else {
+//            return
+//        }
+//
+//        if riceInputTextField.text != "" {
+//            riceInputNum = Double(count) ?? 100
+//            riceInputTextField.text = ""
+//        } else {
+//            riceInputNum = 1
+//        }
+//
+//        if riceInputNum > 99 {
+//            riceInputNum = 0
+//        }
+//        // 1. UserDefault에 탭한 값을 더해 저장한다.
+//        // riceTotal = defaults.double(forKey: Food.rice.count) + riceInputNum
+//        riceTotal = UserDefaultsHelper.standard.ricecount + riceInputNum
+//
+//        // 2. 다시 UserDefault에 저장
+//        // defaults.set(riceTotal, forKey: Food.rice.count)
+//        UserDefaultsHelper.standard.ricecount = riceTotal
+//
+//
+//        stateChange()
     }
     
     
