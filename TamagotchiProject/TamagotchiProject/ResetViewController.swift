@@ -35,8 +35,10 @@ class ResetViewController: UIViewController {
         UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: false, completion: nil)
         
         // UserDefaults 초기화
-        UserDefaults.standard.set(0, forKey: Food.rice.count)
-        UserDefaults.standard.set(0, forKey: Food.water.count)
+        // UserDefaults.standard.set(0, forKey: Food.rice.count)
+        // UserDefaults.standard.set(0, forKey: Food.water.count)
+        UserDefaultsHelper.standard.ricecount = 0
+        UserDefaultsHelper.standard.watercount = 0
         
         // 새로운 뷰 컨트롤러 표시
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
