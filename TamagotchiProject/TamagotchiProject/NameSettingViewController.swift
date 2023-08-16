@@ -35,36 +35,24 @@ class NameSettingViewController: UIViewController {
             return
         }
         // 새로운 이름으로 저장
-        UserDefaults.standard.set(newNickname, forKey: "nickName")
+        //UserDefaults.standard.set(newNickname, forKey: "nickName")
+        UserDefaultsHelper.standard.nickname = newNickname
         
-        guard let defaultName = UserDefaults.standard.string(forKey: "nickName") else {
-            return
-        }
-        
-        print("새로운 이름 : " + defaultName)
         newNameTextField.text = ""
         
         navigationController?.popViewController(animated: true)
-        
     }
     
     func configureNavigationBar() {
-
-        guard let defaultName = UserDefaults.standard.string(forKey: "nickName") else {
-            return
-        }
         
-        navigationItem.title = "\(defaultName)님 이름 정하기"
+        navigationItem.title = "\(UserDefaultsHelper.standard.nickname)님 이름 정하기"
         newNameSaveBarButtonItem.title = "저장"
     }
     
     func configureTextField() {
-        
-        guard let defaultName = UserDefaults.standard.string(forKey: "nickName") else {
-            return
-        }
-        newNameTextField.text = "\(defaultName)"
-        newNameTextField.placeholder = "\(defaultName)님 이름을 알려주세요!"
+
+        newNameTextField.text = "\(UserDefaultsHelper.standard.nickname)"
+        newNameTextField.placeholder = "\(UserDefaultsHelper.standard.nickname)님 이름을 알려주세요!"
     }
     
 }

@@ -30,9 +30,7 @@ class GrowViewController: UIViewController {
     var growImageContent9: String? // 9렙사진
     
     var nameContents: String?
-    
-    var newDefaultName: NicknameChanger = NicknameChanger()
-    
+        
     @IBOutlet var backView: UIView!
     @IBOutlet weak var talkBackView: UIView!
     
@@ -54,61 +52,43 @@ class GrowViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        
         // 다마고치 첫 상태
         setData()
 
-        riceTotal = defaults.double(forKey: Food.rice.count)
-        waterTotal = defaults.double(forKey: Food.water.count)
-        
         // 화면 시작시 저장됐던 값 보이게
-        stataeChange()
+        stateChange()
         
         configureNavigationBar()
         configureBackView()
-        
         configuerTamagochiNameLabel()
         configureStateLabel()
         configureInputTextField()
         configureFeedingButtons()
-        
-
     }
-    
-    var defaultName: String?
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        guard let defaultName = UserDefaults.standard.string(forKey: "nickName") else {
-            return
-        }
         
         settingBarButtonItem.image = UIImage(systemName: "person.circle")
         settingBarButtonItem.tintColor = Color.font.UIcolor
         navigationItem.backBarButtonItem?.title = ""
         
         // 이름 가져오기***
-        navigationItem.title = "\(defaultName)님의 다마고치"
+        navigationItem.title = "\(UserDefaultsHelper.standard.nickname)님의 다마고치"
         
         // 말풍선 바꾸기
         changeTalk()
         
-        stataeChange()
-        
+        stateChange()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-
          self.view.endEditing(true)
-
    }
 
     
     
     @IBAction func riceButtonClicked(_ sender: UIButton) {
-        
-        
         changeTalk()
         
         guard let count = riceInputTextField.text else {
@@ -126,17 +106,19 @@ class GrowViewController: UIViewController {
             riceInputNum = 0
         }
         // 1. UserDefault에 탭한 값을 더해 저장한다.
-        riceTotal = defaults.double(forKey: Food.rice.count) + riceInputNum
-        print(riceTotal)
-
+        // riceTotal = defaults.double(forKey: Food.rice.count) + riceInputNum
+        riceTotal = UserDefaultsHelper.standard.ricecount + riceInputNum
+        
         // 2. 다시 UserDefault에 저장
-        defaults.set(riceTotal, forKey: Food.rice.count)
-        print(riceTotal)
+        // defaults.set(riceTotal, forKey: Food.rice.count)
+        UserDefaultsHelper.standard.ricecount = riceTotal
         
         TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
-        stataeChange()
-
+        
+        stateChange()
     }
+    
+    
     @IBAction func waterButtonClicked(_ sender: UIButton) {
         
         changeTalk()
@@ -157,15 +139,14 @@ class GrowViewController: UIViewController {
         }
         
         // 1. UserDefault에 탭한 값을 더해 저장한다.
-        waterTotal = defaults.double(forKey: Food.water.count) + waterInputNum
-        print(waterTotal)
-
-        // 2. 다시 UserDefault에 저장
-        defaults.set(waterTotal, forKey: Food.water.count)
-        print(waterTotal)
+        // waterTotal = defaults.double(forKey: Food.water.count) + waterInputNum
+        waterTotal = UserDefaultsHelper.standard.watercount + waterInputNum
         
-        // TamagotchiStateLabel.text = "LV\(levelCalc())﹒밥알 \(riceTotal)개﹒물방울 \(waterTotal)개"
-        stataeChange()
+        // 2. 다시 UserDefault에 저장
+        // defaults.set(waterTotal, forKey: Food.water.count)
+        UserDefaultsHelper.standard.watercount = waterTotal
+        
+        stateChange()
     }
     
     
@@ -181,13 +162,12 @@ class GrowViewController: UIViewController {
     
     
     // 레벨, 밥알, 물방울, 레벨별 이미지 변경
-    func stataeChange() {
-                
-        guard let TamagoName = UserDefaults.standard.string(forKey: "TamagotchiName") else {
-            return
-        }
+    func stateChange() {
+
+        riceTotal = UserDefaultsHelper.standard.ricecount
+        waterTotal = UserDefaultsHelper.standard.watercount
         
-        if TamagoName == Tamagotchi.green.rawValue {
+        if UserDefaultsHelper.standard.tamagotchiname == Tamagotchi.green.rawValue {
             growImageContent1 = Tamagotchi.green.appearance1
             growImageContent2 = Tamagotchi.green.appearance2
             growImageContent3 = Tamagotchi.green.appearance3
@@ -197,7 +177,7 @@ class GrowViewController: UIViewController {
             growImageContent7 = Tamagotchi.green.appearance7
             growImageContent8 = Tamagotchi.green.appearance8
             growImageContent9 = Tamagotchi.green.appearance9
-        } else if TamagoName == Tamagotchi.orange.rawValue {
+        } else if UserDefaultsHelper.standard.tamagotchiname == Tamagotchi.orange.rawValue {
             growImageContent1 = Tamagotchi.orange.appearance1
             growImageContent2 = Tamagotchi.orange.appearance2
             growImageContent3 = Tamagotchi.orange.appearance3
@@ -207,7 +187,7 @@ class GrowViewController: UIViewController {
             growImageContent7 = Tamagotchi.orange.appearance7
             growImageContent8 = Tamagotchi.orange.appearance8
             growImageContent9 = Tamagotchi.orange.appearance9
-        } else if TamagoName == Tamagotchi.pink.rawValue {
+        } else if UserDefaultsHelper.standard.tamagotchiname == Tamagotchi.pink.rawValue {
             growImageContent1 = Tamagotchi.pink.appearance1
             growImageContent2 = Tamagotchi.pink.appearance2
             growImageContent3 = Tamagotchi.pink.appearance3
@@ -275,46 +255,26 @@ class GrowViewController: UIViewController {
         
         return level
     }
-    
-//    switch calculatedLevel {
-//    case 30..<100:
-//        return calculatedLevel / 10 + 1
-//    case 100...:
-//        return 10
-//    default:
-//        return 1
-//    }
 
     
     // 말풍선 텍스트 변경***
     func changeTalk() {
-        guard let defaultName = UserDefaults.standard.string(forKey: "nickName") else {
-            return
-        }
-        TamagotchiTalkTextView.text = ["\(defaultName)님 잠자지 말고 코딩 하셔야죠 ㅎㅎ", "\(defaultName)님 복습하고 잠자시나요??", "\(defaultName)님 현생으로 돌아오세요", "코딩은 어렵지 않아요 \(defaultName)님 복습!!"].randomElement()
+
+        TamagotchiTalkTextView.text = ["\(UserDefaultsHelper.standard.nickname)님 잠자지 말고 코딩 하셔야죠 ㅎㅎ", "\(UserDefaultsHelper.standard.nickname)님 복습하고 잠자시나요??", "\(UserDefaultsHelper.standard.nickname)님 현생으로 돌아오세요", "코딩은 어렵지 않아요 \(UserDefaultsHelper.standard.nickname)님 복습!!"].randomElement()
     }
     
-    // 닉네임 변경***
-    func changeNickName() {
-        guard let nickName = defaults.string(forKey: "nickName") else { return }
-        
-        newDefaultName.defaultNickName = nickName
-    }
     
     // 다마고치 첫상태?
     func setData() {
-        guard let image = UserDefaults.standard.string(forKey: "TamagotchiImage"), let name = UserDefaults.standard.string(forKey: "TamagotchiName") else {
-            return
-        }
         
-        TamagotchiImageView.image = UIImage(named: image)
-        TamagotchiNameLabel.text = name
+        TamagotchiImageView.image = UIImage(named: UserDefaultsHelper.standard.tamagotchiimage)
+        TamagotchiNameLabel.text = UserDefaultsHelper.standard.tamagotchiname
         
-        print(image, name)
+        riceTotal = UserDefaultsHelper.standard.ricecount
+        waterTotal = UserDefaultsHelper.standard.watercount
+        
     }
 
-
-    
     
     func configureBackView() {
         backView.backgroundColor =  Color.background.UIcolor
@@ -324,11 +284,7 @@ class GrowViewController: UIViewController {
     
     func configureNavigationBar() {
         
-        guard let defaultName = UserDefaults.standard.string(forKey: "nickName") else {
-            return
-        }
-        
-        navigationItem.title = "\(defaultName)님의 다마고치"
+        navigationItem.title = "\(UserDefaultsHelper.standard.nickname)님의 다마고치"
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .black
         

@@ -16,6 +16,7 @@ class ChoiceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         TamagotchiCollectionView.delegate = self
         TamagotchiCollectionView.dataSource = self
         

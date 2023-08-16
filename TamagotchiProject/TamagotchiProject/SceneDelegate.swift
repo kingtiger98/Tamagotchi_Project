@@ -19,18 +19,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
 
         // UserDefaults에서 "isFirstLaunch" 키를 확인하여 첫 실행 여부를 판단합니다.
-        var isFirstLaunch: Bool = UserDefaults.standard.bool(forKey: "isFirstLaunch")
+        //let isFirstLaunch: Bool = UserDefaults.standard.bool(forKey: "isFirstLaunch")
+        print(UserDefaultsHelper.standard.applanch) // 싱글톤***
+
+        
         // 디버깅
         // isFirstLaunch = false
 
-        print(isFirstLaunch)
 
-        if isFirstLaunch == false {
+        // if isFirstLaunch == false {
+        if UserDefaultsHelper.standard.applanch == false { // 싱글톤***
 
             // 첫 실행 여부를 true로 설정하여 다음에 앱이 실행될 때 첫 실행이 아닌 것으로 표시합니다.
             //UserDefaults.standard.set(true, forKey: "isFirstLaunch")
-            isFirstLaunch = true
-
+            //isFirstLaunch = true
+            
             // 첫 실행인 경우 다른 화면을 보여주기 위해 초기화면 대신 새로운 화면을 표시합니다.
             let sb = UIStoryboard(name: "Main", bundle: nil)
             guard let vc = sb.instantiateViewController(withIdentifier: "ChoiceViewController") as? ChoiceViewController else {
@@ -41,7 +44,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             window?.rootViewController = nav
             
-        } else if isFirstLaunch == true {
+        } else if UserDefaultsHelper.standard.applanch == true {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             guard let vc = sb.instantiateViewController(withIdentifier: "GrowViewController") as? GrowViewController else {
                 return

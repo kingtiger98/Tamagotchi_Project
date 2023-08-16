@@ -39,7 +39,8 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         // 디폴트 이름 "대장" 지정***
-        UserDefaults.standard.set("대장", forKey: "nickName")
+        //UserDefaults.standard.set("대장", forKey: "nickName")
+        UserDefaultsHelper.standard.nickname = "대장" // 싱글톤!***
         
         setData()
         
@@ -60,41 +61,22 @@ class DetailViewController: UIViewController {
     // GrowViewController로 값전달***
     @IBAction func startButtonClicked(_ sender: UIButton) {
         
-        UserDefaults.standard.set(true, forKey: "isFirstLaunch")
-        print(UserDefaults.standard.bool(forKey: "isFirstLaunch"))
-
+        //UserDefaults.standard.set(true, forKey: "isFirstLaunch")
+        UserDefaultsHelper.standard.applanch = true // 싱글톤
         
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "GrowViewController") as? GrowViewController else {
             print("GrowViewController로 다운캐스팅 실패")
             return
         }
-           
-        // 다마고치의 레벨별 이미지 명을 모두 UserDefaults에서 알고 있을 필요가 있나? ***
-//        UserDefaults.standard.set(imageContent1, forKey: "image1")
-//        UserDefaults.standard.set(imageContent2, forKey: "image2")
-//        UserDefaults.standard.set(imageContent3, forKey: "image3")
-//        UserDefaults.standard.set(imageContent4, forKey: "image4")
-//        UserDefaults.standard.set(imageContent5, forKey: "image5")
-//        UserDefaults.standard.set(imageContent6, forKey: "image6")
-//        UserDefaults.standard.set(imageContent7, forKey: "image7")
-//        UserDefaults.standard.set(imageContent8, forKey: "image8")
-//        UserDefaults.standard.set(imageContent9, forKey: "image9")
-                
-        UserDefaults.standard.set(imageContent1, forKey: "TamagotchiImage")
-        UserDefaults.standard.set(nameContens, forKey: "TamagotchiName")
+     
+        // UserDefaults.standard.set(imageContent1, forKey: "TamagotchiImage")
+        // UserDefaults.standard.set(nameContens, forKey: "TamagotchiName")
 
-        
-//        vc.growImageContent1 = imageContent1
-//        vc.growImageContent2 = imageContent2
-//        vc.growImageContent3 = imageContent3
-//        vc.growImageContent4 = imageContent4
-//        vc.growImageContent5 = imageContent5
-//        vc.growImageContent6 = imageContent6
-//        vc.growImageContent7 = imageContent7
-//        vc.growImageContent8 = imageContent8
-//        vc.growImageContent9 = imageContent9
-        
-        
+        // 위 2줄 싱글톤으로 ***
+        guard let image = imageContent1, let name = nameContens else { return }
+        UserDefaultsHelper.standard.tamagotchiimage = image
+        UserDefaultsHelper.standard.tamagotchiname = name
+
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         
@@ -112,8 +94,6 @@ class DetailViewController: UIViewController {
         imageContent8 = row.levelEightAppearance
         imageContent9 = row.levelNineAppearance
 
-        
-        
         nameContens = row.name
         introduceContents = row.introduce
         
@@ -131,9 +111,6 @@ class DetailViewController: UIViewController {
         TamagotchiImageView.image = UIImage(named: "\(image)")
         TamagotchiNameLabel.text = name
         TamagotchiIntroduceTextView.text = introduce
-        
-        
-        
     }
     
     
