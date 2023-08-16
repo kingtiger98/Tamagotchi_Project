@@ -42,7 +42,7 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = settingTableView.dequeueReusableCell(withIdentifier: "SettingTableViewCell") as? SettingTableViewCell else {
+        guard let cell = settingTableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.reuseIdentifier) as? SettingTableViewCell else {
             return UITableViewCell()
         }
         
@@ -63,7 +63,7 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 0 {
-            guard let vc1 = storyboard?.instantiateViewController(withIdentifier: "NameSettingViewController") as? NameSettingViewController else {
+            guard let vc1 = storyboard?.instantiateViewController(withIdentifier: NameSettingViewController.reuseIdentifier) as? NameSettingViewController else {
                 return
             }
             navigationController?.pushViewController(vc1, animated: true)
@@ -75,7 +75,7 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             
             // 2.
             let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "ChoiceViewController") as! ChoiceViewController
+            let vc = sb.instantiateViewController(withIdentifier: ChoiceViewController.reuseIdentifier) as! ChoiceViewController
             let nav = UINavigationController(rootViewController: vc)
             
             sceneDelegate?.window?.rootViewController = nav
@@ -86,7 +86,7 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
             
         } else if indexPath.row == 2 {
          
-            guard let vc = storyboard?.instantiateViewController(withIdentifier: "ResetViewController") as? ResetViewController else {
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: ResetViewController.reuseIdentifier) as? ResetViewController else {
                 return
             }
             

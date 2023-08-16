@@ -42,7 +42,7 @@ class ResetViewController: UIViewController {
         
         // 새로운 뷰 컨트롤러 표시
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "ChoiceViewController") as? ChoiceViewController else {
+        guard let vc = storyboard.instantiateViewController(withIdentifier: ChoiceViewController.reuseIdentifier) as? ChoiceViewController else {
             return
         }
         

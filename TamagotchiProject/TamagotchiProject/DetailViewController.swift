@@ -64,7 +64,7 @@ class DetailViewController: UIViewController {
         //UserDefaults.standard.set(true, forKey: "isFirstLaunch")
         UserDefaultsHelper.standard.applanch = true // 싱글톤
         
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "GrowViewController") as? GrowViewController else {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: GrowViewController.reuseIdentifier) as? GrowViewController else {
             print("GrowViewController로 다운캐스팅 실패")
             return
         }

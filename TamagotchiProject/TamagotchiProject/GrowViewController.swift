@@ -152,7 +152,7 @@ class GrowViewController: UIViewController {
     
     
     @IBAction func settingBarButttonItemClicked(_ sender: UIBarButtonItem) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as? SettingViewController else {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: SettingViewController.reuseIdentifier) as? SettingViewController else {
             return
         }
         navigationController?.pushViewController(vc, animated: true)

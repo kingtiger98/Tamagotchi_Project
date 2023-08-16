@@ -23,7 +23,7 @@ class ChoiceViewController: UIViewController {
         
         // register
         let nib = UINib(nibName: "TamagotchiCollectionViewCell", bundle: nil)
-        TamagotchiCollectionView.register(nib, forCellWithReuseIdentifier: TamagotchiCollectionViewCell.identifier)
+        TamagotchiCollectionView.register(nib, forCellWithReuseIdentifier: TamagotchiCollectionViewCell.reuseIdentifier)
         
         
         configureNavigationBar()
@@ -56,7 +56,7 @@ extension ChoiceViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         let row: TamagotchiState = tamagochiInfo.tamagotchi[indexPath.row]
         
-        guard let cell = TamagotchiCollectionView.dequeueReusableCell(withReuseIdentifier: TamagotchiCollectionViewCell.identifier, for: indexPath) as? TamagotchiCollectionViewCell else {
+        guard let cell = TamagotchiCollectionView.dequeueReusableCell(withReuseIdentifier: TamagotchiCollectionViewCell.reuseIdentifier, for: indexPath) as? TamagotchiCollectionViewCell else {
             print("TamagotchiCollectionViewCell로 다운캐스팅 실패")
             return UICollectionViewCell()
         }
@@ -82,7 +82,7 @@ extension ChoiceViewController: UICollectionViewDelegate, UICollectionViewDataSo
             present(alert, animated: true)
         }
         
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.reuseIdentifier) as? DetailViewController else {
             print("DetailViewController로 다운캐스팅 실패")
             return
         }
