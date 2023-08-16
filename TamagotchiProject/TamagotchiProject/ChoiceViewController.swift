@@ -94,7 +94,7 @@ extension ChoiceViewController: UICollectionViewDelegate, UICollectionViewDataSo
         vc.modalTransitionStyle = .coverVertical
         vc.modalPresentationStyle = .overCurrentContext
         
-        vc.configureCell(row: row)
+        vc.configureTamagotchiCollectionViewCell(row: row)
 
         present(vc, animated: true)
     }

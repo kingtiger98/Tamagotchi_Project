@@ -44,7 +44,8 @@ class DetailViewController: UIViewController {
         setData()
         
         configureView()
-        configureButton()
+        //configureButton()
+        configureButtons()
         configuerTamagochiNameLabel()
         configureTamagotchiIntroduce()
     }
@@ -98,7 +99,7 @@ class DetailViewController: UIViewController {
         present(nav, animated: false)
     }
     
-    func configureCell(row: TamagotchiState) {
+    func configureTamagotchiCollectionViewCell(row: TamagotchiState) {
         imageContent1 = row.levelOneAppearance
         imageContent2 = row.levelTwoAppearance
         imageContent3 = row.levelThreeAppearance
@@ -140,28 +141,49 @@ class DetailViewController: UIViewController {
         DetailBackView.layer.masksToBounds = true
     }
     
-    func configureButton() {
-        cancleButton.setTitle("취소", for: .normal)
-        startButton.setTitle("시작하기", for: .normal)
-
-        cancleButton.setTitleColor(.lightGray, for: .highlighted)
-        startButton.setTitleColor(.lightGray, for: .highlighted)
-
-        cancleButton.tintColor = Color.font.UIcolor
-        startButton.tintColor = Color.font.UIcolor
-
-        cancleButton.backgroundColor = .systemGray6
-        startButton.backgroundColor = Color.background.UIcolor
-
-        
-        //cancleButton.layer.addBorder(edge: .top, color: Color.font.UIcolor, thickness: 0.5)
-        cancleButton.layer.borderWidth = 0.5
-        cancleButton.layer.borderColor = Color.bound.CGcolor
-
-        //startButton.layer.addBorder(edge: .top, color: Color.font.UIcolor, thickness: 0.5)
-        startButton.layer.borderWidth = 0.5
-        startButton.layer.borderColor = Color.bound.CGcolor
+//    func configureButton() {
+//        cancleButton.setTitle("취소", for: .normal)
+//        startButton.setTitle("시작하기", for: .normal)
+//
+//        cancleButton.backgroundColor = .systemGray6
+//        startButton.backgroundColor = Color.background.UIcolor
+//
+//
+//        cancleButton.setTitleColor(.lightGray, for: .highlighted)
+//        startButton.setTitleColor(.lightGray, for: .highlighted)
+//
+//        cancleButton.tintColor = Color.font.UIcolor
+//        startButton.tintColor = Color.font.UIcolor
+//
+//        cancleButton.layer.borderWidth = 0.5
+//        cancleButton.layer.borderColor = Color.bound.CGcolor
+//
+//        startButton.layer.borderWidth = 0.5
+//        startButton.layer.borderColor = Color.bound.CGcolor
+//    }
+    
+    
+    
+    func configureButton(_ button: UIButton, title: String, backgroundColor: UIColor, highlightedColor: UIColor, tintColor: UIColor, borderColor: CGColor) {
+        button.setTitle(title, for: .normal)
+        button.backgroundColor = backgroundColor
+        button.setTitleColor(.lightGray, for: .highlighted)
+        button.tintColor = tintColor
+        button.layer.borderWidth = 0.5
+        button.layer.borderColor = borderColor
     }
+
+    func configureButtons() {
+        configureButton(cancleButton, title: "취소", backgroundColor: .systemGray6, highlightedColor: .lightGray, tintColor: Color.font.UIcolor, borderColor: Color.bound.CGcolor)
+        configureButton(startButton, title: "시작하기", backgroundColor: Color.background.UIcolor, highlightedColor: .lightGray, tintColor: Color.font.UIcolor, borderColor: Color.bound.CGcolor)
+    }
+
+    
+    
+    
+    
+    
+    
 
     func configuerTamagochiNameLabel() {
         

@@ -245,11 +245,6 @@ class GrowViewController: UIViewController {
     
     // 레벨별 이미지 변경
     func stataeChange() {
-        
-//        guard let image1 = imageContent1, let image2 = imageContent2, let image3 = imageContent3, let image4 = imageContent4, let image5 = imageContent5,
-//              let image6 = imageContent6, let image7 = imageContent7, let image8 = imageContent8, let image9 = imageContent9 else {
-//            return
-//        }
                 
         switch levelCalc() {
         case 1:
