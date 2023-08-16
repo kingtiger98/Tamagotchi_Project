@@ -176,8 +176,12 @@ class GrowViewController: UIViewController {
         
         changeTalk()
         
-        guard let count = waterInputTextField.text else {
-            return
+        guard let count = waterInputTextField.text else { return }
+        
+        do {
+            let result = try valiNumberInputError(number: count)
+        } catch {
+            print("ERROR")
         }
         
         if waterInputTextField.text != ""   {
