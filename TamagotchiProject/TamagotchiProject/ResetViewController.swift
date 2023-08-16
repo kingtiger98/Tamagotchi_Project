@@ -31,22 +31,27 @@ class ResetViewController: UIViewController {
     
     
     @IBAction func resetButtonClicked(_ sender: UIButton) {
+        // 모든 모달 뷰 컨트롤러를 해제
+        UIApplication.shared.windows.first?.rootViewController?.dismiss(animated: false, completion: nil)
+        
+        // UserDefaults 초기화
         UserDefaults.standard.set(0, forKey: Food.rice.count)
         UserDefaults.standard.set(0, forKey: Food.water.count)
         
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ChoiceViewController") as? ChoiceViewController else {
+        // 새로운 뷰 컨트롤러 표시
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "ChoiceViewController") as? ChoiceViewController else {
             return
         }
-
-        vc.navigationItem.title = "다마고치 선택하기"
         
+        vc.navigationItem.title = "다마고치 선택하기"
         
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
         
-        present(nav, animated: true)
-
+        UIApplication.shared.windows.first?.rootViewController?.present(nav, animated: true)
     }
+
     
     
     // 배경뷰 불투명하게
@@ -58,9 +63,7 @@ class ResetViewController: UIViewController {
     }
  
     
-    
     func configureButton() {
-        
         noResetButton.setTitle("아니!", for: .normal)
         resetButton.setTitle("웅!", for: .normal)
 
@@ -72,14 +75,5 @@ class ResetViewController: UIViewController {
 
         noResetButton.backgroundColor = .systemGray6
         resetButton.backgroundColor = Color.background.UIcolor
-
-        
-        //cancleButton.layer.addBorder(edge: .top, color: Color.font.UIcolor, thickness: 0.5)
-        //noResetButton.layer.borderWidth = 0.5
-        //noResetButton.layer.borderColor = Color.bound.CGcolor
-
-        //startButton.layer.addBorder(edge: .top, color: Color.font.UIcolor, thickness: 0.5)
-        //resetButton.layer.borderWidth = 0.5
-        //resetButton.layer.borderColor = Color.bound.CGcolor
     }
 }
