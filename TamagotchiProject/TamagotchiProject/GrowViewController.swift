@@ -45,9 +45,7 @@ class GrowViewController: UIViewController {
     @IBOutlet weak var riceButton: UIButton!
     @IBOutlet weak var waterButton: UIButton!
     
-    
     @IBOutlet weak var settingBarButtonItem: UIBarButtonItem!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +62,8 @@ class GrowViewController: UIViewController {
         configureStateLabel()
         configureInputTextField()
         configureFeedingButtons()
+        
+        alarm()
     }
         
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +86,28 @@ class GrowViewController: UIViewController {
          self.view.endEditing(true)
    }
 
+    
+    func alarm() {
+        // 앱 알람
+        // 포그라운드에서 알림이 안뜨는게 디폴트! : 앱실행중
+        
+        // 1. 컨텐츠
+        let content = UNMutableNotificationContent()
+        content.title = "다마고치에게 먹이를 주세요!"
+        content.body = "다마고치가 굶고 있어여,,,"
+        // content.badge = 100
+        
+        // 2. 언제 => 알림 보내!
+         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 86400, repeats: true)
+        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false) // repeats을 false하면 60초 아래로 알림오는 것도 가능함
+
+        let request = UNNotificationRequest(identifier: "\(Date())", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            print(error)
+        }
+    }
+    
     
     func valiNumberInputError(number: String) throws -> Bool {
         
@@ -317,7 +339,11 @@ class GrowViewController: UIViewController {
     // 말풍선 텍스트 변경***
     func changeTalk() {
 
-        TamagotchiTalkTextView.text = ["\(UserDefaultsHelper.standard.nickname)님 잠자지 말고 코딩 하셔야죠 ㅎㅎ", "\(UserDefaultsHelper.standard.nickname)님 복습하고 잠자시나요??", "\(UserDefaultsHelper.standard.nickname)님 현생으로 돌아오세요", "코딩은 어렵지 않아요 \(UserDefaultsHelper.standard.nickname)님 복습!!"].randomElement()
+        TamagotchiTalkTextView.text = [
+            "\(UserDefaultsHelper.standard.nickname)님 잠자지 말고 코딩 하셔야죠 ㅎㅎ",
+            "\(UserDefaultsHelper.standard.nickname)님 복습하고 잠자시나요??",
+            "\(UserDefaultsHelper.standard.nickname)님 현생으로 돌아오세요",
+            "코딩은 어렵지 않아요 \(UserDefaultsHelper.standard.nickname)님 복습!!"].randomElement()
     }
     
     

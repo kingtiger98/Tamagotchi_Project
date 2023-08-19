@@ -30,7 +30,10 @@ class ChoiceViewController: UIViewController {
         configureTamagotchiCollectionView()
 
         configureFlowLayout()
+
     }
+    
+    
     
     func configureNavigationBar() {
         navigationItem.title = "다마고치 선택하기"
