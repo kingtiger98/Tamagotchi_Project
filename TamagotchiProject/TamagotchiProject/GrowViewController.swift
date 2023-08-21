@@ -164,33 +164,7 @@ class GrowViewController: UIViewController {
         UserDefaultsHelper.standard.ricecount = riceTotal
         
         stateChange()
-        
-//        changeTalk()
-//
-//        guard let count = riceInputTextField.text else {
-//            return
-//        }
-//
-//        if riceInputTextField.text != "" {
-//            riceInputNum = Double(count) ?? 100
-//            riceInputTextField.text = ""
-//        } else {
-//            riceInputNum = 1
-//        }
-//
-//        if riceInputNum > 99 {
-//            riceInputNum = 0
-//        }
-//        // 1. UserDefault에 탭한 값을 더해 저장한다.
-//        // riceTotal = defaults.double(forKey: Food.rice.count) + riceInputNum
-//        riceTotal = UserDefaultsHelper.standard.ricecount + riceInputNum
-//
-//        // 2. 다시 UserDefault에 저장
-//        // defaults.set(riceTotal, forKey: Food.rice.count)
-//        UserDefaultsHelper.standard.ricecount = riceTotal
-//
-//
-//        stateChange()
+
     }
     
     
@@ -419,14 +393,14 @@ class GrowViewController: UIViewController {
         riceButton.tintColor = Color.font.UIcolor
         waterButton.tintColor = Color.font.UIcolor
         
-        riceButton.layer.borderColor = Color.bound.CGcolor
-        waterButton.layer.borderColor = Color.bound.CGcolor
         
-        riceButton.layer.borderWidth = 1
-        waterButton.layer.borderWidth = 1
-        
-        riceButton.layer.cornerRadius = 5
-        waterButton.layer.cornerRadius = 5
+        // @IBInspectable/Designable 사용으로 주석처리함
+        //riceButton.layer.borderColor = Color.bound.CGcolor
+        //waterButton.layer.borderColor = Color.bound.CGcolor
+        //riceButton.layer.borderWidth = 1
+        //waterButton.layer.borderWidth = 1
+        //riceButton.layer.cornerRadius = 5
+        //waterButton.layer.cornerRadius = 5
 
     }
     
