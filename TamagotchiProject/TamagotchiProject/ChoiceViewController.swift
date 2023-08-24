@@ -28,7 +28,6 @@ class ChoiceViewController: UIViewController {
         
         configureNavigationBar()
         configureTamagotchiCollectionView()
-
         configureFlowLayout()
 
     }
