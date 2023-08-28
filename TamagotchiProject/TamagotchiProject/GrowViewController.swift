@@ -49,7 +49,7 @@ class GrowViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         // 다마고치 첫 상태
         setData()
 
@@ -64,8 +64,12 @@ class GrowViewController: UIViewController {
         configureFeedingButtons()
         
         alarm()
-    }
         
+
+    }
+    
+
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -80,7 +84,18 @@ class GrowViewController: UIViewController {
         changeTalk()
         
         stateChange()
+        
+        // 3. notification으로 값 역전달 받기
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationTest), name: NSNotification.Name("newNickName"), object: nil)
     }
+    
+    @objc func notificationTest(notification: NSNotification) {
+        if let name = notification.userInfo?["nickName"] as? String {
+            print(name)
+        }
+    }
+    
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
          self.view.endEditing(true)

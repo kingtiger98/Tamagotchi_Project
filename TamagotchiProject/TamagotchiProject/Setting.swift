@@ -7,6 +7,20 @@
 
 import UIKit
 
+struct subTitleList{
+    var subTitles = ["대장", "", ""]
+    
+    var newSubTitles: [String]{
+        get { return subTitles }
+        
+        set {
+            self.subTitles = newValue
+        }
+    }
+
+}
+
+
 enum Setting: Int, CaseIterable {
     
     
@@ -49,6 +63,6 @@ enum Setting: Int, CaseIterable {
         }
     }
     
-    
+
     
 }

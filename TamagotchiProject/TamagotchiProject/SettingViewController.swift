@@ -7,27 +7,49 @@
 
 import UIKit
 
+
+
+
+
+
 class SettingViewController: UIViewController {
 
+    //var subtitles = subTitleList()
+    
     @IBOutlet weak var settingTableView: UITableView!
+    
+    // 2. notification으로 값 역전달 받기
+    // var subTitleList = ["", "", ""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         settingTableView.delegate = self
         settingTableView.dataSource = self
 
         navigationItem.title = "설정"
         navigationItem.backBarButtonItem?.title = ""
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        // 2. notification으로 값 역전달 받기
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationTest), name: NSNotification.Name("newNickName"), object: nil)
+                
+        // 이름 변경하기 옆에 작은 닉네임 갱신!
         settingTableView.reloadData()
         
     }
+    
+    @objc func notificationTest(notification: NSNotification) {
+        print("notificationTest")
+        if let name = notification.userInfo?["nickName"] as? String {
+            print(name)
+        }
+    }
+    
 
 }
 
@@ -53,9 +75,9 @@ extension SettingViewController : UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.font = .boldSystemFont(ofSize: 13)
         cell.textLabel?.textColor = Color.font.UIcolor
         
-        cell.detailTextLabel?.text = Setting.allCases[indexPath.row].subTitle
-        // 이름 변경하기 옆에 작게 내 이름 뜨게해야대***
-        
+        // 이름 변경하기 옆에 작은 닉네임 설정
+        cell.detailTextLabel?.text = Setting.allCases[indexPath.row].subTitle // Userdefaults 사용할 때
+        // cell.detailTextLabel?.text = subtitles.newSubTitles[indexPath.row] // notification 사용할 때
         
         return cell
     }
